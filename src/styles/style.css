@@ -1,368 +1,591 @@
-        /* Variáveis CSS para a Paleta de Cores */
+        /* ====================================
+           1. VARIÁVEIS DE TEMA (LIGHT/DARK)
+           ==================================== */
         :root {
-            --color-primary-dark: #1e293b;
-            --color-secondary-dark: #334155;
-            --color-accent: #3b82f6;
-            --color-text-light: #f8fafc;
-            --color-text-dark: #1e293b;
-            --color-bg-light: #f8fafc;
-            --color-bg-card-light: #ffffff;
-            --color-border: #e2e8f0;
+            /* Cores Gerais (LIGHT) */
+            --primary-bg: #f1f5f9; /* Claro, fundo da seção principal */
+            --secondary-bg: #ffffff; /* Branco, fundo do cabeçalho/card/secundário */
+            --primary-text: #1e293b; /* Escuro, texto principal */
+            --secondary-text: #475569; /* Cinza, texto secundário */
+            --accent-color: #f59e0b; /* Amarelo/Laranja, cor de destaque para design */
+            --error-color: #ef4444; /* Vermelho, erro de validação */
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --header-bg: rgba(255, 255, 255, 0.95);
         }
 
-        /* Configurações Base e Rolagem Suave */
-        html { scroll-behavior: smooth; }
+        .dark {
+            /* Cores Gerais (DARK) */
+            --primary-bg: #0f172a;
+            --secondary-bg: #1e293b;
+            --primary-text: #f8fafc;
+            --secondary-text: #94a3b8;
+            --accent-color: #fcd34d; /* Amarelo mais claro para o Dark Mode */
+            --error-color: #fca5a5;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --header-bg: rgba(30, 41, 59, 0.95);
+        }
 
+        /* ====================================
+           2. ESTILOS GLOBAIS
+           ==================================== */
+        
         body {
-            background-color: var(--color-bg-light);
-            color: var(--color-text-dark);
             font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--primary-text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
-            min-height: 100vh;
+            scroll-behavior: smooth;
         }
 
-        /* Estilos do Modo Escuro */
-        .dark body {
-            background-color: var(--color-primary-dark);
-            color: var(--color-text-light);
-        }
-
-        /* Estilo Global de Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1rem;
         }
-        @media (min-width: 640px) { .container { padding: 0 1.5rem; } }
-        @media (min-width: 1024px) { .container { padding: 0 2rem; } }
 
-        /* Estilos de Elementos Interativos (Transições e Hover) */
-        .interactive-element {
-            transition: all 0.3s ease-in-out;
-            border-radius: 0.5rem;
-        }
-        .interactive-element:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-        .button:hover {
-            background-color: #2563eb; /* blue-600 */
+        section {
+            padding: 4rem 1rem;
+            min-height: 80vh;
+            transition: background-color 0.3s;
         }
 
-        /* --- NAVEGAÇÃO E CABEÇALHO --- */
-        .main-header {
+        h2 {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-color);
+            display: inline-block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* ====================================
+           3. NAVEGAÇÃO E CABEÇALHO
+           ==================================== */
+
+        header {
             position: sticky;
             top: 0;
-            z-index: 10;
-            background-color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            background-color: var(--header-bg);
+            backdrop-filter: blur(5px);
         }
-        .dark .main-header {
-            background-color: rgba(51, 65, 85, 0.95);
-        }
-        .nav-container {
+
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 0;
         }
-        .nav-title {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--color-accent);
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
             text-decoration: none;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .nav-link {
-            color: #4b5563;
-            text-decoration: none;
-            padding: 0.5rem;
-        }
-        .dark .nav-link {
-            color: var(--color-text-light);
-        }
-        .nav-link:hover {
-            color: var(--color-accent);
+            transition: color 0.2s;
         }
 
-        /* Botão Tema */
-        #theme-toggle {
+        .nav-links a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 1.5rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Tema Toggle Button */
+        #themeToggle {
             padding: 0.5rem;
-            background-color: #e5e7eb;
-            color: #1f2937;
+            border-radius: 9999px;
+            background-color: var(--secondary-bg);
+            color: var(--primary-text);
             border: none;
             cursor: pointer;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .dark #theme-toggle {
-            background-color: #374151;
-            color: var(--color-text-light);
-        }
-        #theme-toggle svg { width: 1.25rem; height: 1.25rem; }
-
-        /* --- SEÇÕES GERAIS --- */
-        main { padding: 3rem 0; }
-        section {
-            padding: 5rem 0;
-            border-top: 1px solid var(--color-border);
-        }
-        .dark section {
-            border-top-color: var(--color-secondary-dark);
-        }
-        h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            border-bottom: 4px solid var(--color-accent);
-            display: inline-block;
-            padding-bottom: 0.25rem;
-        }
-        .section-header-wrapper {
-            text-align: center;
+            transition: background-color 0.2s, transform 0.2s;
         }
 
-        /* --- SEÇÃO HOME --- */
-        .home-section {
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 5rem;
+        .dark #themeToggle {
+             color: #facc15; /* Amarelo para lua no dark mode */
+             background-color: var(--secondary-bg);
         }
-        .home-subtitle {
-            font-size: 1.25rem;
-            color: var(--color-accent);
-            font-weight: 500;
-            margin-bottom: 0.75rem;
-        }
-        .home-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        .home-text {
-            color: #6b7280;
-            font-size: 1.125rem;
-            font-family: monospace;
-        }
-        .dark .home-text {
-            color: #9ca3af;
-        }
-        .home-button {
-            margin-top: 2rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--color-accent);
-            color: white;
-            font-weight: 600;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            text-decoration: none;
-            display: inline-block;
+        
+        #themeToggle:hover {
+            transform: scale(1.1);
         }
 
-        /* Efeito Typing/Cursor */
-        #typing-text {
-            border-right: 2px solid;
-            width: 0;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: 
-                typing 3s steps(40, end) forwards,
-                blink-caret 0.75s step-end infinite;
-        }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--color-accent); } }
-
-        /* --- SEÇÃO SOBRE MIM --- */
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            align-items: center;
-        }
-        .profile-photo {
-            width: 16rem;
-            height: 16rem;
-            border-radius: 9999px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            object-fit: cover;
-            margin: 0 auto;
-        }
-        .bio-text {
-            line-height: 1.6;
-        }
-        .bio-text p {
-            margin-bottom: 1.5rem;
-            font-size: 1.125rem;
-        }
-
-        /* --- SEÇÃO PROJETOS --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        .project-card {
-            padding: 1.5rem;
-            background-color: var(--color-bg-card-light);
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-        }
-        .dark .project-card {
-            background-color: var(--color-secondary-dark);
-        }
-        .project-image {
-            width: 100%;
-            height: 10rem;
-            object-fit: cover;
-            border-radius: 0.375rem;
-            margin-bottom: 1rem;
-        }
-        .project-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--color-accent);
-        }
-        .project-description {
-            color: #4b5563;
-            margin-bottom: 1rem;
-        }
-        .dark .project-description {
-            color: #9ca3af;
-        }
-        .project-details-btn {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--color-accent);
-            cursor: pointer;
-            text-decoration: underline;
+        /* Menu Mobile */
+        .mobile-menu-toggle {
+            display: none; /* Esconde no desktop */
+            padding: 0.5rem;
             border: none;
             background: none;
-            padding: 0;
-        }
-        .project-details {
-            margin-top: 0.75rem;
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-        .dark .project-details {
-            color: #d1d5db;
+            color: var(--primary-text);
+            cursor: pointer;
         }
 
-        /* --- SEÇÃO CONTATO (FORMULÁRIO) --- */
-        .contact-form-container {
-            max-width: 512px;
-            margin: 0 auto;
-            background-color: var(--color-bg-card-light);
-            padding: 2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 8px 10px rgba(0, 0, 0, 0.04);
+        #mobileMenu {
+            position: absolute;
+            width: 100%;
+            background-color: var(--secondary-bg);
+            box-shadow: 0 8px 10px var(--shadow-color);
+            transition: max-height 0.3s ease-in-out;
+            max-height: 0;
+            overflow: hidden;
         }
-        .dark .contact-form-container {
-            background-color: var(--color-secondary-dark);
+
+        #mobileMenu.open {
+            max-height: 300px;
         }
-        .form-group { margin-bottom: 1.25rem; }
-        .form-label {
+
+        #mobileMenu a {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        .form-input, .form-textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.5rem;
-            box-sizing: border-box;
-        }
-        .dark .form-input, .dark .form-textarea {
-            border-color: #4b5563;
-            background-color: var(--color-primary-dark);
-            color: var(--color-text-light);
-        }
-        .form-input:focus, .form-textarea:focus {
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
-            outline: none;
-        }
-        .submit-button {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: var(--color-accent);
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-        }
-        .form-message {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 0.5rem;
-            text-align: center;
-            font-weight: 500;
-        }
-        .form-message.error {
-            background-color: #fee2e2;
-            color: #b91c1c;
-        }
-        .dark .form-message.error {
-            background-color: #7f1d1d;
-            color: #fca5a5;
-        }
-        .form-message.success {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-        .dark .form-message.success {
-            background-color: #064e3b;
-            color: #a7f3d0;
+            padding: 0.75rem 1.5rem;
+            color: var(--primary-text);
+            text-decoration: none;
+            transition: background-color 0.2s;
         }
 
-        /* --- BOTÃO VOLTAR AO TOPO --- */
-        #scroll-to-top {
-            position: fixed;
-            bottom: 1.5rem;
-            right: 1.5rem;
-            padding: 0.75rem;
-            background-color: var(--color-accent);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none; /* Inicia escondido */
+        #mobileMenu a:hover {
+            background-color: var(--primary-bg);
         }
-        #scroll-to-top svg { width: 1.5rem; height: 1.5rem; }
 
-        /* --- RESPONSIVIDADE (MEDIA QUERIES) --- */
-
-        /* Tablet (768px) */
+        /* Desktop view: mostre links, esconda toggle */
         @media (min-width: 768px) {
-            .about-content {
-                flex-direction: row;
+            .nav-links {
+                display: block;
             }
-            .about-content > div:nth-child(1) {
-                width: 33.333333%;
+            .mobile-menu-toggle {
+                display: none;
             }
-            .about-content > div:nth-child(2) {
-                width: 66.666667%;
+        }
+        
+        /* Mobile view: Esconda links, mostre toggle */
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
             }
-            .projects-grid {
+            .mobile-menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ====================================
+           4. SEÇÃO INÍCIO (HERO)
+           ==================================== */
+        
+        #inicio {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: linear-gradient(135deg, var(--primary-bg) 0%, #cbd5e1 100%);
+        }
+
+        .dark #inicio {
+            background-image: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 20rem;
+            height: 20rem;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            background-color: var(--secondary-bg);
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 10px 15px var(--shadow-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-pic svg {
+            width: 5rem;
+            height: 5rem;
+            color: var(--secondary-text);
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: var(--accent-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary-text);
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-text); /* Cor de texto adaptada ao accent-color mais claro */
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px var(--shadow-color);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .dark .cta-button {
+             color: #1e293b;
+        }
+
+
+        .cta-button:hover {
+            background-color: #facc15; /* Amarelo mais vibrante no hover */
+            transform: scale(1.05);
+        }
+
+        /* Responsividade Hero */
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+        }
+
+
+        /* ====================================
+           5. SEÇÃO SOBRE MIM
+           ==================================== */
+
+        #sobre {
+            background-color: var(--secondary-bg);
+        }
+        
+        .about-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+                align-items: center;
+            }
+        }
+
+        .about-text p {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-text);
+        }
+        
+        .skills-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-text);
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            padding: 0.5rem 1rem;
+            background-color: #fef08a; /* Amarelo claro */
+            color: #b45309; /* Laranja escuro */
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            box-shadow: 0 1px 3px var(--shadow-color);
+        }
+        
+        .dark .skill-badge {
+            background-color: #b45309;
+            color: #fef08a;
+        }
+
+        /* ====================================
+           6. SEÇÃO PORTFÓLIO
+           ==================================== */
+
+        #portfolio {
+            background-color: var(--primary-bg);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Desktop (1024px) */
         @media (min-width: 1024px) {
-            .projects-grid {
+            .portfolio-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+        }
+
+        .project-card {
+            background-color: var(--secondary-bg);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px var(--shadow-color);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px var(--shadow-color);
+        }
+
+        .project-image {
+            height: 12rem;
+            background-color: #fffbeb; /* Fundo mais claro para projetos de design */
+            border-top-left-radius: 0.75rem;
+            border-top-right-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+            border-bottom: 3px solid var(--accent-color);
+        }
+        
+        .dark .project-image {
+            background-color: #334155;
+            color: var(--accent-color);
+        }
+
+        .project-details {
+            padding: 1.5rem;
+        }
+
+        .project-details h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-text);
+        }
+
+        .project-details p {
+            color: var(--secondary-text);
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        
+        .project-link:hover {
+            color: #b45309;
+        }
+
+
+        /* ====================================
+           7. SEÇÃO CONTATO (FORMULÁRIO)
+           ==================================== */
+
+        #contato {
+            background-color: var(--secondary-bg);
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-text);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background-color: var(--primary-bg);
+            border-radius: 0.75rem;
+            box-shadow: 0 20px 25px var(--shadow-color);
+        }
+        
+        .dark .contact-form {
+            background-color: var(--secondary-bg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--primary-text);
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            background-color: var(--secondary-bg);
+            color: var(--primary-text);
+            border-radius: 0.5rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .dark .form-input, .dark .form-textarea {
+            border-color: #4b5563;
+            background-color: #1f2937;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.5); /* Sombra do accent-color */
+            outline: none;
+        }
+        
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .input-error {
+            border-color: var(--error-color) !important;
+        }
+
+        .status-message {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .status-success {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .dark .status-success {
+            background-color: #065f46;
+            color: #d1fae5;
+        }
+
+        .status-error {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .dark .status-error {
+            background-color: #991b1b;
+            color: #fee2e2;
+        }
+        
+        .submit-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--accent-color);
+            color: var(--primary-text);
+            font-weight: 600;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .dark .submit-button {
+             color: #1e293b;
+        }
+
+        .submit-button:hover {
+            background-color: #facc15;
+            transform: translateY(-2px);
+        }
+
+        /* ====================================
+           8. BOTÃO DE TOPO E RODAPÉ
+           ==================================== */
+
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 1.25rem;
+            right: 1.25rem;
+            z-index: 1000;
+            opacity: 0;
+            padding: 0.75rem;
+            background-color: var(--accent-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .dark #scrollTopBtn {
+             color: #1e293b;
+        }
+
+        #scrollTopBtn.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #scrollTopBtn:hover {
+            background-color: #facc15;
+        }
+
+        footer {
+            background-color: var(--secondary-bg);
+            padding: 1.5rem 0;
+            text-align: center;
+            color: var(--primary-text);
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .dark footer {
+            background-color: var(--primary-bg);
+            border-top: 1px solid #334155;
+            color: var(--secondary-text);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+        
+        footer .accent-text {
+            color: var(--accent-color);
+        }
+        
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
         }

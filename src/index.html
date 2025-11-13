@@ -1,169 +1,213 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio - Projeto Final</title>
-    <link rel="stylesheet" href="styles/style.css">
-    
+    <title>Portfólio - Jéssica Ramos Marcolino</title>
+    <!-- Fonte Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/style.css">
 </head>
-<body class="dark:bg-primary-dark dark:text-text-light min-h-screen">
+<body>
 
-    <!-- Navegação Fixa e Responsiva -->
-    <header class="main-header">
-        <nav class="container nav-container">
-            <a href="#inicio" class="nav-title">Meu Portfólio</a>
+    <!-- CABEÇALHO E NAVEGAÇÃO -->
+    <header>
+        <nav class="container">
+            <a href="#inicio" class="logo">
+                Jéssica Ramos Marcolino
+            </a>
+            
+            <!-- Links de Navegação (Desktop) -->
             <div class="nav-links">
-                <a href="#inicio" class="nav-link interactive-element">Início</a>
-                <a href="#sobre-mim" class="nav-link interactive-element">Sobre Mim</a>
-                <a href="#projetos" class="nav-link interactive-element">Projetos</a>
-                <a href="#contato" class="nav-link interactive-element">Contato</a>
+                <a href="#inicio">Início</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#portfolio">Portfólio</a>
+                <a href="#contato">Contato</a>
+            </div>
+
+            <!-- Botão de Tema e Menu Hamburguer (Mobile) -->
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button id="themeToggle">
+                    <!-- Ícone do Sol (Padrão) / Ícone da Lua (Dark Mode) -->
+                    <svg id="sunIcon" style="width: 24px; height: 24px; display: none;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg id="moonIcon" style="width: 24px; height: 24px; display: block;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
                 
-                <!-- Botão de Alternar Tema -->
-                <button id="theme-toggle" class="interactive-element" aria-label="Alternar tema">
-                    <!-- Ícone de Sol (Claro) ou Lua (Escuro) - Lucide Icons inline SVG -->
-                    <svg id="sun-icon" class="hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/></svg>
-                    <svg id="moon-icon" class="" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                <button id="menuButton" class="mobile-menu-toggle">
+                    <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
+
+        <!-- Menu Mobile -->
+        <div id="mobileMenu">
+            <a href="#inicio" class="menu-link">Início</a>
+            <a href="#sobre" class="menu-link">Sobre</a>
+            <a href="#portfolio" class="menu-link">Portfólio</a>
+            <a href="#contato" class="menu-link">Contato</a>
+        </div>
     </header>
 
-    <main class="container">
-        
-        <!-- 1. Seção Home (Início) -->
-        <section id="inicio" class="home-section">
-            <p class="home-subtitle">Olá, meu nome é Jéssica</p>
-            <h1 class="home-title">
-                Designer
-            </h1>
-            <p id="typing-text" class="home-text"></p>
-            <a href="#contato" class="home-button interactive-element button">
-                Entre em Contato
-            </a>
+    <main>
+        <!-- SEÇÃO 1: INÍCIO (HOME) -->
+        <section id="inicio">
+            <div class="hero-content">
+                <img src="assets/foto_designer.png" class="profile-pic"> 
+                <h1 class="hero-title">
+                    Olá, eu sou a<span class="accent-text"> Jéssica</span>!
+                </h1>
+                <p class="hero-subtitle">
+                    Designer UX/UI e Estrategista Criativa, focada em experiências humanas e resultados.
+                </p>
+                <a href="#portfolio" class="cta-button">
+                    Ver Projetos
+                </a>
+            </div>
         </section>
 
-        <!-- 2. Seção Sobre Mim -->
-        <section id="sobre-mim">
-            <div class="section-header-wrapper">
+        <!-- SEÇÃO 2: SOBRE MIM (ABOUT) -->
+        <section id="sobre">
+            <div class="container">
                 <h2>Sobre Mim</h2>
-            </div>
-            <div class="about-content">
-                <div>
-                    <!-- Foto Fictícia com Placeholder -->
-                    <img src="https://placehold.co/400x400/3b82f6/ffffff?text=FOTO" 
-                         alt="Foto de Perfil Fictícia" 
-                         class="profile-photo interactive-element">
-                </div>
-                <div class="bio-text">
-                    <p>
-                        **Biografia:** Sou um estudante apaixonado por tecnologia e inovação, com foco no desenvolvimento de aplicações web eficientes e escaláveis. Minha jornada na programação começou com a curiosidade de entender como as coisas funcionam por trás das telas, evoluindo para um compromisso em criar experiências de usuário intuitivas.
-                    </p>
-                    <p>
-                        **Formação:** Atualmente cursando **Análise e Desenvolvimento de Sistemas** na [Nome da Instituição Fictícia]. Tenho conhecimentos sólidos em HTML5, CSS3, JavaScript (ES6+), e frameworks como React e Angular. 
-                    </p>
-                    <p>
-                        **Interesses:** Além do desenvolvimento front-end, dedico meu tempo a aprender sobre design de interfaces (UX/UI), segurança cibernética e machine learning. Nos momentos de lazer, gosto de trilhas e jogos de estratégia.
-                    </p>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            Sou uma designer apaixonada por transformar problemas complexos em soluções digitais intuitivas e visualmente ricas. Com 7 anos de experiência, meu foco é no design centrado no usuário, desde a pesquisa e wireframing até a prototipagem de alta fidelidade e testes de usabilidade.
+                        </p>
+                        <p>
+                            Acredito no poder da colaboração e da iteração constante para criar produtos que não apenas funcionem, mas que encantem e atendam às reais necessidades dos usuários. Uso ferramentas modernas para criar sistemas de design robustos e acessíveis.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="skills-title">Minhas Habilidades</h3>
+                        <div class="skills-list">
+                            <span class="skill-badge">Figma & Sketch</span>
+                            <span class="skill-badge">Pesquisa UX</span>
+                            <span class="skill-badge">Prototipagem</span>
+                            <span class="skill-badge">Design de Interface</span>
+                            <span class="skill-badge">Branding & Identidade</span>
+                            <span class="skill-badge">Testes de Usabilidade</span>
+                            <span class="skill-badge">Design Thinking</span>
+                            <span class="skill-badge">HTML & CSS</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3. Seção Projetos -->
-        <section id="projetos">
-            <div class="section-header-wrapper">
-                <h2>Projetos</h2>
-            </div>
-            <div class="projects-grid">
+        <!-- SEÇÃO 3: PORTFÓLIO -->
+        <section id="portfolio">
+            <div class="container">
+                <h2>Portfólio</h2>
+                
+                <div class="portfolio-grid">
+                    
+                    <!-- Cartão de Projeto 1 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            [Icone de App Mobile]
+                        </div>
+                        <div class="project-details">
+                            <h3>Redesenho de Aplicativo de Finanças</h3>
+                            <p>Estudo de caso UX completo para otimizar a experiência de gestão financeira em um aplicativo móvel existente.</p>
+                            <a href="#" class="project-link">Ver Estudo de Caso &rarr;</a>
+                        </div>
+                    </div>
 
-                <!-- Projeto 1 -->
-                <div class="project-card interactive-element">
-                    <img src="https://placehold.co/600x400/10b981/ffffff?text=E-Commerce+Mockup" 
-                         alt="Imagem do Projeto E-Commerce" 
-                         class="project-image">
-                    <h3 class="project-title">Plataforma de E-Commerce</h3>
-                    <p class="project-description">
-                        Um sistema completo de loja virtual, focado em alta performance e experiência do usuário (UX). Implementado com JavaScript para carrinho de compras dinâmico.
-                    </p>
-                    <button onclick="toggleDetails('proj1')" class="project-details-btn">Ver Detalhes</button>
-                    <div id="proj1-details" class="project-details hidden">
-                        Tecnologias: HTML, CSS Puro, JavaScript. Funcionalidades: Filtros de produtos, checkout simulado e autenticação de usuário.
+                    <!-- Cartão de Projeto 2 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            [Icone de Biblioteca]
+                        </div>
+                        <div class="project-details">
+                            <h3>Criação de Sistema de Design (DS)</h3>
+                            <p>Documentação e construção de uma biblioteca de componentes modular e acessível para escalar a produção de interfaces.</p>
+                            <a href="#" class="project-link">Ver Sistema &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Cartão de Projeto 3 -->
+                    <div class="project-card">
+                        <div class="project-image">
+                            [Icone de Logo e Branding]
+                        </div>
+                        <div class="project-details">
+                            <h3>Identidade Visual para Startup</h3>
+                            <p>Desenvolvimento da marca, logo e guia de estilo completo para uma nova empresa de tecnologia no setor de saúde.</p>
+                            <a href="#" class="project-link">Ver Branding &rarr;</a>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Projeto 2 -->
-                <div class="project-card interactive-element">
-                    <img src="https://placehold.co/600x400/f59e0b/ffffff?text=Gerenciador+de+Tarefas" 
-                         alt="Imagem do Projeto Gerenciador de Tarefas" 
-                         class="project-image">
-                    <h3 class="project-title">Gerenciador de Tarefas Pessoal</h3>
-                    <p class="project-description">
-                        Aplicação web para organização pessoal com persistência de dados utilizando localStorage. Design simples e focado em produtividade.
-                    </p>
-                    <button onclick="toggleDetails('proj2')" class="project-details-btn">Ver Detalhes</button>
-                    <div id="proj2-details" class="project-details hidden">
-                        Tecnologias: HTML, CSS Puro. Funcionalidades: Adicionar, remover e marcar tarefas como concluídas. Design totalmente responsivo.
-                    </div>
-                </div>
-
-                <!-- Projeto 3 -->
-                <div class="project-card interactive-element">
-                    <img src="https://placehold.co/600x400/ef4444/ffffff?text=Calculadora+Científica" 
-                         alt="Imagem do Projeto Calculadora" 
-                         class="project-image">
-                    <h3 class="project-title">Calculadora Científica</h3>
-                    <p class="project-description">
-                        Uma calculadora funcional que suporta operações básicas e funções trigonométricas/logarítmicas, inteiramente construída com JavaScript puro.
-                    </p>
-                    <button onclick="toggleDetails('proj3')" class="project-details-btn">Ver Detalhes</button>
-                    <div id="proj3-details" class="project-details hidden">
-                        Tecnologias: HTML, CSS Puro, JavaScript. Foco: Manipulação de strings e avaliação de expressões matemáticas complexas de forma segura.
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <!-- 4. Seção Contato -->
+        <!-- SEÇÃO 4: CONTATO (FORMULÁRIO FUNCIONAL) -->
         <section id="contato">
-            <div class="section-header-wrapper">
-                <h2>Contato</h2>
-            </div>
-            <div class="contact-form-container">
-                <form id="contact-form">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <p class="contact-subtitle">
+                    Interessado em colaborar ou apenas quer dizer oi? Preencha o formulário abaixo!
+                </p>
+
+                <form id="contactForm" class="contact-form">
+                    
+                    <!-- Campo Nome -->
                     <div class="form-group">
                         <label for="name" class="form-label">Nome Completo</label>
-                        <input type="text" id="name" name="name" class="form-input" required>
+                        <input type="text" id="name" name="name" required class="form-input" placeholder="Seu nome">
+                        <p id="nameError" class="error-message">O nome é obrigatório.</p>
                     </div>
+
+                    <!-- Campo Email -->
                     <div class="form-group">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" id="email" name="email" class="form-input" required>
+                        <input type="email" id="email" name="email" required class="form-input" placeholder="seu.email@exemplo.com">
+                        <p id="emailError" class="error-message">O email é obrigatório e deve ser válido.</p>
                     </div>
+
+                    <!-- Campo Assunto -->
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Assunto</label>
+                        <input type="text" id="subject" name="subject" required class="form-input" placeholder="Assunto da mensagem (Ex: Proposta de Colaboração)">
+                        <p id="subjectError" class="error-message">O assunto é obrigatório.</p>
+                    </div>
+
+                    <!-- Campo Mensagem -->
                     <div class="form-group">
                         <label for="message" class="form-label">Mensagem</label>
-                        <textarea id="message" name="message" rows="5" class="form-textarea" required></textarea>
+                        <textarea id="message" name="message" rows="4" required class="form-textarea" placeholder="Detalhe sua ideia ou necessidade de design"></textarea>
+                        <p id="messageError" class="error-message">A mensagem é obrigatória.</p>
                     </div>
-                    
-                    <button type="submit" class="submit-button interactive-element button">
+
+                    <!-- Mensagem de Status (Sucesso/Erro) -->
+                    <div id="statusMessage" class="status-message" role="alert"></div>
+
+                    <!-- Botão de Envio -->
+                    <button type="submit" id="submitButton" class="submit-button">
                         Enviar Mensagem
                     </button>
-                    <div id="form-message" class="form-message hidden"></div>
                 </form>
+
             </div>
         </section>
 
+        <!-- BOTÃO DE VOLTAR AO TOPO -->
+        <button id="scrollTopBtn">
+            <!-- Ícone Seta para Cima -->
+            <svg style="width: 24px; height: 24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
+        </button>
+
     </main>
-    
-    <!-- Botão Voltar ao Topo (Scroll-to-Top) -->
-    <button id="scroll-to-top" class="interactive-element" aria-label="Voltar ao topo">
-        <!-- Ícone Seta para Cima - Lucide Icons inline SVG -->
-        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-    </button>
 
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Jéssica Ramos Marcolino. Todos os direitos reservados.</p>
+        </div>
+    </footer>
 
+    <!-- JAVASCRIPT -->
     <script src="scripts/script.js"></script>
-
-
 </body>
 </html>
